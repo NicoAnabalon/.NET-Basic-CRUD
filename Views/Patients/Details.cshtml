@@ -1,0 +1,82 @@
+﻿@model BasicCRUD.Models.Patient
+
+@{
+    ViewData["Title"] = "Detalles Paciente";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Paciente</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            R.U.T
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RUT)
+        </dd>
+        <dt class="col-sm-2">
+            Nombres
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Apellidos
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Grupo Sanguineo
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BloodType)
+        </dd>
+        <dt class="col-sm-2">
+            Seguro de Salud
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HealthSystem)
+        </dd>
+        <dt class="col-sm-2">
+            Creado
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class="col-sm-2">
+            Actualizado
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Updated)
+        </dd>
+        <dt class="col-sm-2">
+            Citas
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Doctor</th>
+                    <th>Fecha</th>
+                </tr>
+                @foreach (var item in Model.Appointments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DoctorID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PatientID">Editar</a> |
+    <a asp-action="Index">Volver</a>
+</div>

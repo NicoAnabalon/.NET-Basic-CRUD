@@ -1,0 +1,64 @@
+﻿@model BasicCRUD.Models.Patient
+
+@{
+    ViewData["Title"] = "Editar Paciente";
+}
+
+<h1>Editar</h1>
+
+<h4>Paciente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PatientID" />
+            <div class="form-group">
+                <label asp-for="RUT" class="control-label">R.U.T</label>
+                <input asp-for="RUT" class="form-control" />
+                <span asp-validation-for="RUT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Nombres</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Apellidos</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BloodType" class="control-label">Grupo Sanguineo</label>
+                <select asp-for="BloodType" class="form-control" asp-items="Html.GetEnumSelectList<BloodType>()" selected="@Html.DisplayFor(modelItem => Model.BloodType)"></select>
+                <span asp-validation-for="BloodType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthSystem" class="control-label">Seguro de Salud</label>
+                <select asp-for="HealthSystem" class="form-control"  asp-items="Html.GetEnumSelectList<HealthSystem>()" selected="@Html.DisplayFor(modelItem => Model.HealthSystem)"></select>
+                <span asp-validation-for="HealthSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Created" class="control-label" hidden></label>
+                <input asp-for="Created" class="form-control" hidden readonly/>
+                <span asp-validation-for="Created" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Updated" class="control-label" hidden></label>
+                <input asp-for="Updated" class="form-control" hidden readonly/>
+                <span asp-validation-for="Updated" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Editar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BasicCRUD.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Inicio - Doctores";
+}
+
+<h1>Doctores</h1>
+
+<p>
+    <a asp-action="Create">Crear Doctor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                R.U.T
+            </th>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Especialidad
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RUT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialty)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DoctorID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.DoctorID">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.DoctorID">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

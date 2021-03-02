@@ -1,0 +1,51 @@
+﻿@model BasicCRUD.Models.Patient
+
+@{
+    ViewData["Title"] = "Eliminar Paciente";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Estás seguro de que quieres eliminarlo?</h3>
+<div>
+    <h4>Paciente</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            R.U.T
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RUT)
+        </dd>
+        <dt class = "col-sm-2">
+            Nombres
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            Apellidos
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            Grupo Sanguineo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BloodType)
+        </dd>
+        <dt class = "col-sm-2">
+            Seguro de Salud
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HealthSystem)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PatientID" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver</a>
+    </form>
+</div>

@@ -1,0 +1,59 @@
+﻿@model BasicCRUD.Models.Doctor
+
+@{
+    ViewData["Title"] = "Editar Doctor";
+}
+
+<h1>Editar</h1>
+
+<h4>Doctor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DoctorID" />
+            <div class="form-group">
+                <label asp-for="RUT" class="control-label">R.U.T</label>
+                <input asp-for="RUT" class="form-control" />
+                <span asp-validation-for="RUT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Nombres</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Apellidos</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Specialty" class="control-label">Especialidad</label>
+                <select asp-for="Specialty" class="form-control"  asp-items="Html.GetEnumSelectList<Specialty>()" selected="@Html.DisplayFor(modelItem => Model.Specialty)"></select>
+                <span asp-validation-for="Specialty" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Created" class="control-label" hidden></label>
+                <input asp-for="Created" class="form-control" hidden readonly />
+                <span asp-validation-for="Created" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Updated" class="control-label" hidden></label>
+                <input asp-for="Updated" class="form-control" hidden readonly/>
+                <span asp-validation-for="Updated" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Editar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
